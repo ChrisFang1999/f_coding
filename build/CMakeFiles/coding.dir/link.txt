@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/coding.dir/src/coding.cc.o -o ../bin/coding 
