@@ -172,8 +172,21 @@ CMakeFiles/coding.dir/src/coding.cc.o: ../src/coding.cc \
   /usr/include/c++/7/bits/stl_uninitialized.h \
   /usr/include/c++/7/bits/stl_vector.h \
   /usr/include/c++/7/bits/stl_bvector.h \
-  /usr/include/c++/7/bits/vector.tcc
+  /usr/include/c++/7/bits/vector.tcc \
+  /usr/include/c++/7/queue \
+  /usr/include/c++/7/deque \
+  /usr/include/c++/7/bits/stl_deque.h \
+  /usr/include/c++/7/bits/deque.tcc \
+  /usr/include/c++/7/bits/stl_heap.h \
+  /usr/include/c++/7/bits/stl_queue.h \
+  /usr/include/c++/7/bits/uses_allocator.h
 
+
+/usr/include/c++/7/bits/stl_queue.h:
+
+/usr/include/c++/7/bits/deque.tcc:
+
+/usr/include/c++/7/bits/stl_deque.h:
 
 /usr/include/c++/7/bits/stl_vector.h:
 
@@ -213,6 +226,8 @@ CMakeFiles/coding.dir/src/coding.cc.o: ../src/coding.cc \
 
 /usr/include/x86_64-linux-gnu/bits/_G_config.h:
 
+/usr/include/c++/7/bits/stl_heap.h:
+
 /usr/include/stdio.h:
 
 /usr/include/alloca.h:
@@ -228,6 +243,8 @@ CMakeFiles/coding.dir/src/coding.cc.o: ../src/coding.cc \
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/c++/7/bits/uses_allocator.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
@@ -373,6 +390,8 @@ CMakeFiles/coding.dir/src/coding.cc.o: ../src/coding.cc \
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
+/usr/include/c++/7/deque:
+
 /usr/include/c++/7/bits/localefwd.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
@@ -498,6 +517,8 @@ CMakeFiles/coding.dir/src/coding.cc.o: ../src/coding.cc \
 /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h:
 
 /usr/include/time.h:
+
+/usr/include/c++/7/queue:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 

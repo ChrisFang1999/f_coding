@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 #include <queue>
+#include <map>
+#include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -17,7 +20,7 @@ struct TreeNode
     TreeNode(int value, TreeNode *l, TreeNode *r) : val(value), left(l), right(r) {}
 };
 
-//滑动窗口求最值双端队列
+// 滑动窗口求最值双端队列 239
 class MyDeQueue
 {
 public:
@@ -43,7 +46,7 @@ public:
     }
 };
 
-//滑动窗口求最大值
+// 滑动窗口求最大值
 vector<int> maxSlidingWindow(vector<int> &nums, int k)
 {
     MyDeQueue que;
@@ -60,5 +63,65 @@ vector<int> maxSlidingWindow(vector<int> &nums, int k)
         result.push_back(que.front()); // 记录对应的最大值
     }
     return result;
+}
+
+// 242. 有效的字母异位词
+bool isAnagram(string s, string t)
+{
+    vector<int> record(26, 0);
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        record[s[i] - 'a']++;
+    }
+    for (size_t i = 0; i < t.size(); i++)
+    {
+        record[t[i] - 'a']--;
+    }
+    for (size_t i = 0; i < record.size(); i++)
+    {
+        if (record[i] != 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+// 383. 赎金信
+bool canConstruct(string ransomNote, string magazine)
+{
+    vector<int> record(26, 0);
+    for (size_t i = 0; i < magazine.size(); i++)
+    {
+        record[magazine[i] - 'a']++;
+    }
+    for (size_t i = 0; i < ransomNote.size(); i++)
+    {
+        record[ransomNote[i] - 'a']--;
+    }
+    for (size_t i = 0; i < record.size(); i++)
+    {
+        if (record[i] < 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+// 49. 字母异位词分组
+vector<vector<string>> groupAnagrams(vector<string> &strs)
+{
+    unordered_map<string, vector<string>> mp;
+    for (string str : strs)
+    {
+        string key = str;
+        sort(key.begin(), key.end());
+        mp[key].emplace_back(str);
+    }
+    vector<vector<string>> ans;
+    for (auto it = mp.begin(); it != mp.end(); ++it)
+    {
+        ans.emplace_back(it->second);
+    }
+    return ans;
 }
 #endif // CODING_H_
