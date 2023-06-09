@@ -125,4 +125,88 @@ vector<vector<string>> groupAnagrams(vector<string> &strs)
     }
     return ans;
 }
+
+// 26. 原地删除有序数组中的重复项
+int removeDuplicates(vector<int> &nums)
+{
+    if (nums.size() == 0)
+    {
+        return 0;
+    }
+    int slow = 0, fast = 0; // 不可以int slow , fast = 0，必须对两个变量都赋值
+    while (fast < nums.size())
+    {
+        if (nums[slow] != nums[fast])
+        {
+            slow++;
+            nums[slow] = nums[fast];
+        }
+        fast++;
+    }
+    return slow + 1;
+}
+// 27. 移除元素
+int removeElement(vector<int> &nums, int val)
+{
+    int slow = 0;
+    int fast = 0;
+    while (fast < nums.size())
+    {
+        if (nums[fast] != val)
+        {
+            nums[slow] = nums[fast];
+            slow++;
+        }
+        fast++;
+    }
+    return slow;
+}
+// 167. 两数之和 II - 输入有序数组
+vector<int> twoSum(vector<int> &numbers, int target)
+{
+    int left = 0;
+    int right = numbers.size() - 1;
+    while (left < right)
+    {
+        if (numbers[left] + numbers[right] < target)
+        {
+            left++;
+        }
+        else if (numbers[left] + numbers[right] > target)
+        {
+            right--;
+        }
+        else
+        {
+            return vector<int>{left + 1, right + 1};
+        }
+    }
+    return {-1, -1};
+}
+
+// 5.最长回文子串
+//从一个点向两端扩散，寻找回文串
+string palindrome(string str, int left, int right)
+{
+    while (left >= 0 && right < str.size() && str[left] == str[right])
+    {
+        left--;
+        right++;
+    }
+    return str.substr(left + 1, right - left - 1);
+}
+string longestPalindrome(string s)
+{
+    string result = "";
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        string s1 = palindrome(s, i, i);
+        string s2 = palindrome(s, i, i + 1);
+
+        result = result.size() > s1.size() ? result : s1;
+        result = result.size() > s2.size() ? result : s2;
+    }
+    return result;
+}
+
 #endif // CODING_H_

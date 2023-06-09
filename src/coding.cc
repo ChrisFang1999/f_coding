@@ -2,12 +2,8 @@
 
 int main()
 {
-
-    float a = 123123122.132412;
-    string b = to_string(a);
-    string c;
+string str = "lxkoioksa";
+cout<<longestPalindrome(str);
     
-    cout << to_string(round(a * 100) / 100) << endl;
-
     return 0;
 }
