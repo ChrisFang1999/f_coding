@@ -8,6 +8,8 @@
 #include <unordered_map>
 #include <algorithm>
 #include <math.h>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
 
@@ -19,6 +21,15 @@ struct TreeNode
     TreeNode(int value) : val(value), left(nullptr), right(nullptr) {}
     TreeNode(int value, TreeNode *l) : val(value), left(l), right(nullptr) {}
     TreeNode(int value, TreeNode *l, TreeNode *r) : val(value), left(l), right(r) {}
+};
+
+struct ListNode
+{
+    ListNode *next;
+    int val;
+    ListNode() : val(), next(nullptr) {}
+    ListNode(int value) : val(value), next(nullptr) {}
+    ListNode(int value, ListNode *n) : next(n), val(value) {}
 };
 
 // 滑动窗口求最值双端队列 239
@@ -185,7 +196,7 @@ vector<int> twoSum(vector<int> &numbers, int target)
 }
 
 // 5.最长回文子串
-//从一个点向两端扩散，寻找回文串
+// 从一个点向两端扩散，寻找回文串
 string palindrome(string str, int left, int right)
 {
     while (left >= 0 && right < str.size() && str[left] == str[right])
@@ -207,6 +218,57 @@ string longestPalindrome(string s)
         result = result.size() > s2.size() ? result : s2;
     }
     return result;
+}
+
+// 86. 分隔链表
+ListNode *partition(ListNode *head, int x)
+{
+    ListNode *dummy1 = new ListNode(-1);
+    ListNode *dummy2 = new ListNode(-1);
+    ListNode *p1 = dummy1;
+    ListNode *p2 = dummy2;
+    ListNode *p = head;
+    while (p)
+    {
+        if (p->val < x)
+        {
+            p1->next = p;
+            p1 = p1->next;
+        }
+        else
+        {
+            p2->next = p;
+            p2 = p2->next;
+        }
+        // 断开原链表中的每个节点的 next 指针,必须断开
+        ListNode *temp = p->next;
+        p->next = nullptr;
+        p = temp;
+    }
+    p1->next = dummy2->next;
+    return dummy1->next;
+}
+
+//  19. 删除链表的倒数第 N 个结点
+ListNode *removeNthFromEnd(ListNode *head, int n)
+{
+    ListNode *dummy = new ListNode(0, head);
+    ListNode *slow = dummy;//可以防止列表只存在一个元素
+    ListNode *fast = head;
+    while (n > 0)
+    {
+        fast = fast->next;
+        n--;
+    }
+    while (fast)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    slow->next = slow->next->next;
+    ListNode *ans = dummy->next;
+    delete dummy;
+    return ans;
 }
 
 #endif // CODING_H_
